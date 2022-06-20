@@ -1,3 +1,4 @@
+import floatingPointState.FloatingPointStartState
 import integerState.IntegerStartState
 
 class PatternDetector {
@@ -5,7 +6,8 @@ class PatternDetector {
 
     private fun getPatternStartState(pattern: String): State {
         val patternStates: Map<String, State> = mapOf(
-            Pair("integer", IntegerStartState(this))
+            Pair("integer", IntegerStartState(this)),
+            Pair("floating point", FloatingPointStartState(this)),
         )
 
         return patternStates[pattern] ?: throw Exception("$pattern is not a valid pattern.")
