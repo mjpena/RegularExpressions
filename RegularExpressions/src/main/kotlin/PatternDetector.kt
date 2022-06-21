@@ -1,4 +1,5 @@
 import binaryNumberStates.BinaryNumberStartState
+import emailAddressStates.EmailAddressStartState
 import floatingPointStates.FloatingPointStartState
 import integerStates.IntegerStartState
 
@@ -10,6 +11,7 @@ class PatternDetector {
             Pair("integer", IntegerStartState(this)),
             Pair("floating point", FloatingPointStartState(this)),
             Pair("binary number", BinaryNumberStartState(this)),
+            Pair("email address", EmailAddressStartState(this)),
         )
 
         return patternStates[pattern] ?: throw Exception("$pattern is not a valid pattern.")

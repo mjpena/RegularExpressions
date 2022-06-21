@@ -58,4 +58,19 @@ internal class PatternDetectorTest{
         assertFalse(patternDetector.detect("binary number", "104"))
         assertFalse(patternDetector.detect("binary number", "00"))
     }
+
+    @Test
+    fun validEmailAddress(){
+        assertTrue(patternDetector.detect("email address", "a@b.c"))
+        assertTrue(patternDetector.detect("email address", "joseph.ditton@usu.edu"))
+        assertTrue(patternDetector.detect("email address", "{}*\$.&\$*(@*\$%&.*&*"))
+    }
+
+    @Test
+    fun invalidEmailAddress(){
+        assertFalse(patternDetector.detect("email address", "@b.c"))
+        assertFalse(patternDetector.detect("email address", "a@b@c.com"))
+        assertFalse(patternDetector.detect("email address", "a.b@b.b.c"))
+        assertFalse(patternDetector.detect("email address", "joseph ditton@usu.edu"))
+    }
 }
