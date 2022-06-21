@@ -73,4 +73,22 @@ internal class PatternDetectorTest{
         assertFalse(patternDetector.detect("email address", "a.b@b.b.c"))
         assertFalse(patternDetector.detect("email address", "joseph ditton@usu.edu"))
     }
+
+    @Test
+    fun validComplexPassword(){
+        assertTrue(patternDetector.detect("complex password", "akklfejgiojL!p"))
+        assertTrue(patternDetector.detect("complex password", "!j9f0Leioijggjkd"))
+        assertTrue(patternDetector.detect("complex password", "PLei90!j"))
+        assertTrue(patternDetector.detect("complex password", "T4*f9fwjg2Lo"))
+        assertTrue(patternDetector.detect("complex password", "T-Leiwgj92hwg!+=4"))
+    }
+
+    @Test
+    fun invalidComplexPassword(){
+        assertFalse(patternDetector.detect("complex password", "g$0L"))
+        assertFalse(patternDetector.detect("complex password", "kdgjao92!#*dg84"))
+        assertFalse(patternDetector.detect("complex password", "Lig902Jiogwjlgioj"))
+        assertFalse(patternDetector.detect("complex password", "dlkjg289g2hgij45r"))
+        assertFalse(patternDetector.detect("complex password", "dlkjg289g2hgij45r!*#"))
+    }
 }
