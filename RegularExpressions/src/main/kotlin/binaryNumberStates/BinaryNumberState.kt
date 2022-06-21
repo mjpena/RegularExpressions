@@ -1,9 +1,10 @@
 package binaryNumberStates
 
+import ConstantCharacters
 import PatternDetector
 import State
 
 abstract class BinaryNumberState(patternDetector: PatternDetector): State(patternDetector){
-    protected val zero: String = "0"
-    protected val one: String = "1"
+    protected val zero: String = ConstantCharacters.zero
+    protected val one: String = ConstantCharacters.one
 }

@@ -1,9 +1,10 @@
 package integerStates
 
+import ConstantCharacters
 import PatternDetector
 import State
 
 abstract class IntegerState(patternDetector: PatternDetector): State(patternDetector){
-    protected val integers: String = "0123456789"
-    protected val nonZeroIntegers: String = "123456789"
+    protected val integers: String = ConstantCharacters.integers
+    protected val nonZeroIntegers: String = ConstantCharacters.nonZeroIntegers
 }

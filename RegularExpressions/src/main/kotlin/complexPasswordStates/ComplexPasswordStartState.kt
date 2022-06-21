@@ -9,7 +9,7 @@ class ComplexPasswordStartState(patternDetector: PatternDetector): ComplexPasswo
         if (character in capitolLetters){
             patternDetector.state = ComplexPasswordHasCapitolLetterState(patternDetector)
         }
-        else if (character !in lowercaseLetters){
+        else if (character !in nonSpecialCharacters){
             patternDetector.state = ComplexPasswordHasSpecialCharacterState(patternDetector)
         }
     }

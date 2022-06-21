@@ -1,4 +1,4 @@
-object CharacterGroupings {
+object ConstantCharacters {
     val zero: String = "0"
     val one: String = "1"
     val nonZeroIntegers: String = "123456789"

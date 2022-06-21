@@ -6,7 +6,7 @@ class ComplexPasswordHasCapitolLetterState(patternDetector: PatternDetector): Co
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character !in lowercaseLetters && character !in capitolLetters){
+        if (character !in nonSpecialCharacters){
             patternDetector.state = ComplexPasswordEndsWithSpecialCharacterState(patternDetector)
         }
     }
