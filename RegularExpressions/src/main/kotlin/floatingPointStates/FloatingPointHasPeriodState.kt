@@ -1,4 +1,4 @@
-package floatingPointState
+package floatingPointStates
 
 import InvalidState
 import PatternDetector

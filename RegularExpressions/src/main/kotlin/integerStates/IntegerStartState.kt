@@ -1,4 +1,4 @@
-package integerState
+package integerStates
 
 import InvalidState
 import PatternDetector

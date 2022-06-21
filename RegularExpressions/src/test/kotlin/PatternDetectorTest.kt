@@ -40,4 +40,22 @@ internal class PatternDetectorTest{
         assertFalse(patternDetector.detect("floating point", "?902"))
         assertFalse(patternDetector.detect("floating point", "a902"))
     }
+
+    @Test
+    fun validBinaryNumber(){
+        assertTrue(patternDetector.detect("binary number", "1"))
+        assertTrue(patternDetector.detect("binary number", "11"))
+        assertTrue(patternDetector.detect("binary number", "101"))
+        assertTrue(patternDetector.detect("binary number", "1001"))
+    }
+
+    @Test
+    fun invalidBinaryNumber(){
+        assertFalse(patternDetector.detect("binary number", ""))
+        assertFalse(patternDetector.detect("binary number", "0"))
+        assertFalse(patternDetector.detect("binary number", "10"))
+        assertFalse(patternDetector.detect("binary number", "12"))
+        assertFalse(patternDetector.detect("binary number", "104"))
+        assertFalse(patternDetector.detect("binary number", "00"))
+    }
 }

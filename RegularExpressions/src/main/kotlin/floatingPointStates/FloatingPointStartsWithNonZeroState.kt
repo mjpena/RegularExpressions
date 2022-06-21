@@ -1,16 +1,16 @@
-package floatingPointState
+package floatingPointStates
 
 import InvalidState
 import PatternDetector
 
-class FloatingPointStartsWithZeroState(patternDetector: PatternDetector): FloatingPointState(patternDetector) {
+class FloatingPointStartsWithNonZeroState(patternDetector: PatternDetector): FloatingPointState(patternDetector) {
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == "."){
+        if(character == "."){
             patternDetector.state = FloatingPointHasPeriodState(patternDetector)
         }
-        else{
+        else if (character !in "0123456789"){
             patternDetector.state = InvalidState(patternDetector)
         }
     }

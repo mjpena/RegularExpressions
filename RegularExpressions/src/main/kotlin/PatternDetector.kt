@@ -1,5 +1,6 @@
-import floatingPointState.FloatingPointStartState
-import integerState.IntegerStartState
+import binaryNumberStates.BinaryNumberStartState
+import floatingPointStates.FloatingPointStartState
+import integerStates.IntegerStartState
 
 class PatternDetector {
     lateinit var state: State
@@ -8,6 +9,7 @@ class PatternDetector {
         val patternStates: Map<String, State> = mapOf(
             Pair("integer", IntegerStartState(this)),
             Pair("floating point", FloatingPointStartState(this)),
+            Pair("binary number", BinaryNumberStartState(this)),
         )
 
         return patternStates[pattern] ?: throw Exception("$pattern is not a valid pattern.")

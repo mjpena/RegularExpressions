@@ -1,8 +1,7 @@
-package floatingPointState
+package floatingPointStates
 
 import InvalidState
 import PatternDetector
-import integerState.IntegerValidState
 
 class FloatingPointStartState(patternDetector: PatternDetector): FloatingPointState(patternDetector) {
     override val isAccepting: Boolean = false
