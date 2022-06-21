@@ -7,7 +7,7 @@ class IntegerStartState(patternDetector: PatternDetector): IntegerState(patternD
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character in "123456789") {
+        if (character in nonZeroIntegers) {
             patternDetector.state = IntegerValidState(patternDetector)
         } else {
             patternDetector.state = InvalidState(patternDetector)

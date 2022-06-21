@@ -7,7 +7,7 @@ class FloatingPointHasPeriodState(patternDetector: PatternDetector): FloatingPoi
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character in "0123456789"){
+        if (character in integers){
             patternDetector.state = FloatingPointValidState(patternDetector)
         }
         else {

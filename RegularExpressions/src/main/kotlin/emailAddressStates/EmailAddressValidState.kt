@@ -7,7 +7,7 @@ class EmailAddressValidState(patternDetector: PatternDetector): EmailAddressStat
     override val isAccepting: Boolean = true
 
     override fun consumeInput(character: String) {
-        if (character == " " || character == "@" || character == "."){
+        if (character == space || character == at || character == period){
             patternDetector.state = InvalidState(patternDetector)
         }
     }

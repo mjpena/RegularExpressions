@@ -7,7 +7,7 @@ class FloatingPointStartsWithZeroState(patternDetector: PatternDetector): Floati
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == "."){
+        if (character == period){
             patternDetector.state = FloatingPointHasPeriodState(patternDetector)
         }
         else{

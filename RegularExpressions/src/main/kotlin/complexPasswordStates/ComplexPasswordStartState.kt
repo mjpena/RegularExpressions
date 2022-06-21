@@ -6,10 +6,10 @@ class ComplexPasswordStartState(patternDetector: PatternDetector): ComplexPasswo
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){
+        if (character in capitolLetters){
             patternDetector.state = ComplexPasswordHasCapitolLetterState(patternDetector)
         }
-        else if (character !in "abcdefghijklmnopqrstuvwxyz"){
+        else if (character !in lowercaseLetters){
             patternDetector.state = ComplexPasswordHasSpecialCharacterState(patternDetector)
         }
     }

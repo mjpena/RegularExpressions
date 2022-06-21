@@ -6,7 +6,7 @@ class ComplexPasswordHasSpecialCharacterState(patternDetector: PatternDetector):
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){
+        if (character in capitolLetters){
             patternDetector.state = ComplexPasswordValidState(patternDetector)
         }
     }

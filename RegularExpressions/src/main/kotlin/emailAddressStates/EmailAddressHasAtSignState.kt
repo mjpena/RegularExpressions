@@ -7,7 +7,7 @@ class EmailAddressHasAtSignState(patternDetector: PatternDetector): EmailAddress
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == " " || character == "." || character == "@"){
+        if (character == space || character == period || character == at){
             patternDetector.state = InvalidState(patternDetector)
         }
         else{

@@ -7,7 +7,7 @@ class BinaryNumberStartState(patternDetector: PatternDetector): BinaryNumberStat
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == "1"){
+        if (character == one){
             patternDetector.state = BinaryNumberEndsWithOneState(patternDetector)
         }
         else{

@@ -7,10 +7,10 @@ class EmailAddressPartOneNotEmptyState(patternDetector: PatternDetector): EmailA
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == "@"){
+        if (character == at){
             patternDetector.state = EmailAddressHasAtSignState(patternDetector)
         }
-        else if (character == " "){
+        else if (character == space){
             patternDetector.state = InvalidState(patternDetector)
         }
     }

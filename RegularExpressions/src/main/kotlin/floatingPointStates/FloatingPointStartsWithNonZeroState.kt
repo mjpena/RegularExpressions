@@ -7,10 +7,10 @@ class FloatingPointStartsWithNonZeroState(patternDetector: PatternDetector): Flo
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if(character == "."){
+        if(character == period){
             patternDetector.state = FloatingPointHasPeriodState(patternDetector)
         }
-        else if (character !in "0123456789"){
+        else if (character !in integers){
             patternDetector.state = InvalidState(patternDetector)
         }
     }

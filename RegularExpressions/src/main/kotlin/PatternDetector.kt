@@ -1,5 +1,6 @@
 import binaryNumberStates.BinaryNumberStartState
 import complexPasswordStates.ComplexPasswordStartState
+import complexPasswordStates.ComplexPasswordState
 import emailAddressStates.EmailAddressStartState
 import floatingPointStates.FloatingPointStartState
 import integerStates.IntegerStartState
@@ -21,6 +22,10 @@ class PatternDetector {
 
     fun detect(pattern: String, input: String): Boolean {
         state = getPatternStartState(pattern)
+        if (state is ComplexPasswordState){
+            if (input.length < 8) return false
+        }
+
         val characters = input
             .trim()
             .split("")

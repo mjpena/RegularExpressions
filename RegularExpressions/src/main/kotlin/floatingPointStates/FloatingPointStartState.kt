@@ -7,13 +7,13 @@ class FloatingPointStartState(patternDetector: PatternDetector): FloatingPointSt
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == "0"){
+        if (character == zero){
             patternDetector.state = FloatingPointStartsWithZeroState(patternDetector)
         }
-        else if(character == "."){
+        else if(character == period){
             patternDetector.state = FloatingPointHasPeriodState(patternDetector)
         }
-        else if (character in "123456789") {
+        else if (character in nonZeroIntegers) {
             patternDetector.state = FloatingPointStartsWithNonZeroState(patternDetector)
         }
         else {

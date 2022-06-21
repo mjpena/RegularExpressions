@@ -7,7 +7,7 @@ class EmailAddressHasPeriodState(patternDetector: PatternDetector): EmailAddress
     override val isAccepting: Boolean = false
 
     override fun consumeInput(character: String) {
-        if (character == " " || character == "@" || character == "."){
+        if (character == space || character == at || character == period){
             patternDetector.state = InvalidState(patternDetector)
         }
         else{
