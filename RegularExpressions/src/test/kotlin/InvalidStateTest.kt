@@ -1,37 +1,33 @@
-package floatingPointStates
-
-import InvalidState
-import PatternDetector
+import integerStates.IntegerValidState
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class FloatingPointStartsWithNonZeroStateTest {
+internal class InvalidStateTest {
     @Test
     fun isAccepting(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("floating point", "1")
+        patternDetector.detect("integer", "a")
         assertFalse(patternDetector.state.isAccepting)
     }
 
     @Test
     fun consumeInteger(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("floating point", "40")
-        assertTrue(patternDetector.state is FloatingPointStartsWithNonZeroState)
+        patternDetector.detect("integer", "3ak9")
+        assertTrue(patternDetector.state is InvalidState)
     }
 
     @Test
-    fun consumePeriod(){
+    fun consumeSpecialCharacter(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("floating point", "1.")
-        assertTrue(patternDetector.state is FloatingPointHasPeriodState)
+        patternDetector.detect("integer", "3f!")
+        assertTrue(patternDetector.state is InvalidState)
     }
 
-
     @Test
-    fun consumeOther(){
+    fun consumeLetter(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("floating point", "1p")
+        patternDetector.detect("integer", "4?a")
         assertTrue(patternDetector.state is InvalidState)
     }
 }
