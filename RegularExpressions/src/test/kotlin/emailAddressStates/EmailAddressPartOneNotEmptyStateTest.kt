@@ -1,36 +1,36 @@
-package binaryNumberStates
+package emailAddressStates
 
 import InvalidState
 import PatternDetector
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class BinaryNumberEndsWithZeroStateTest{
+internal class EmailAddressPartOneNotEmptyStateTest {
     @Test
     fun isAccepting(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10")
+        patternDetector.detect("email address", "")
         assertFalse(patternDetector.state.isAccepting)
     }
 
     @Test
-    fun consumeOne(){
+    fun consumeSpace(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "101")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithOneState)
+        patternDetector.detect("email address", "u ")
+        assertTrue(patternDetector.state is InvalidState)
     }
 
     @Test
-    fun consumeZero(){
+    fun consumeAt(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "100")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithZeroState)
+        patternDetector.detect("email address", "a@")
+        assertTrue(patternDetector.state is EmailAddressHasAtSignState)
     }
 
     @Test
     fun consumeOther(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10m")
-        assertTrue(patternDetector.state is InvalidState)
+        patternDetector.detect("email address", "a0")
+        assertTrue(patternDetector.state is EmailAddressPartOneNotEmptyState)
     }
 }

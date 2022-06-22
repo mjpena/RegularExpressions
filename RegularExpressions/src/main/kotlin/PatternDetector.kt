@@ -27,7 +27,6 @@ class PatternDetector {
         }
 
         val characters = input
-            .trim()
             .split("")
             .drop(1)
             .dropLast(1)

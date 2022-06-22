@@ -1,36 +1,36 @@
-package binaryNumberStates
+package integerStates
 
 import InvalidState
 import PatternDetector
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class BinaryNumberEndsWithZeroStateTest{
+internal class IntegerValidStateTest {
     @Test
     fun isAccepting(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10")
-        assertFalse(patternDetector.state.isAccepting)
+        patternDetector.detect("integer", "3")
+        assertTrue(patternDetector.state.isAccepting)
     }
 
     @Test
-    fun consumeOne(){
+    fun consumeNonZeroInteger(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "101")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithOneState)
+        patternDetector.detect("integer", "93")
+        assertTrue(patternDetector.state is IntegerValidState)
     }
 
     @Test
     fun consumeZero(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "100")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithZeroState)
+        patternDetector.detect("integer", "80")
+        assertTrue(patternDetector.state is IntegerValidState)
     }
 
     @Test
     fun consumeOther(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10m")
+        patternDetector.detect("integer", "4a")
         assertTrue(patternDetector.state is InvalidState)
     }
 }

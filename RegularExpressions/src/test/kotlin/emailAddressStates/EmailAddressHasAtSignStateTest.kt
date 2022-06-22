@@ -1,44 +1,43 @@
-package binaryNumberStates
+package emailAddressStates
 
 import InvalidState
 import PatternDetector
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class BinaryNumberStartStateTest{
-
+internal class EmailAddressHasAtSignStateTest {
     @Test
     fun isAccepting(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "")
+        patternDetector.detect("email address", "a@")
         assertFalse(patternDetector.state.isAccepting)
     }
 
     @Test
-    fun consumeOne(){
+    fun consumeSpace(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "1")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithOneState)
-    }
-
-    @Test
-    fun consumeZero(){
-        val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "0")
+        patternDetector.detect("email address", "a@ ")
         assertTrue(patternDetector.state is InvalidState)
     }
 
     @Test
-    fun consumeZero2(){
+    fun consumePeriod(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithZeroState)
+        patternDetector.detect("email address", "a@.")
+        assertTrue(patternDetector.state is InvalidState)
+    }
+
+    @Test
+    fun consumeAt(){
+        val patternDetector: PatternDetector = PatternDetector()
+        patternDetector.detect("email address", "a@@")
+        assertTrue(patternDetector.state is InvalidState)
     }
 
     @Test
     fun consumeOther(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "m")
-        assertTrue(patternDetector.state is InvalidState)
+        patternDetector.detect("email address", "a@0")
+        assertTrue(patternDetector.state is EmailAddressPartTwoNotEmptyState)
     }
 }

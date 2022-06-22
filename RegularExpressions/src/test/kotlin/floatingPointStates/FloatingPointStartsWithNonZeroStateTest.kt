@@ -1,36 +1,37 @@
-package binaryNumberStates
+package floatingPointStates
 
 import InvalidState
 import PatternDetector
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class BinaryNumberEndsWithZeroStateTest{
+internal class FloatingPointStartsWithNonZeroStateTest {
     @Test
     fun isAccepting(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10")
+        patternDetector.detect("floating point", "1")
         assertFalse(patternDetector.state.isAccepting)
     }
 
     @Test
-    fun consumeOne(){
+    fun consumeInteger(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "101")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithOneState)
+        patternDetector.detect("floating point", "409")
+        assertTrue(patternDetector.state is FloatingPointStartsWithNonZeroState)
     }
 
     @Test
-    fun consumeZero(){
+    fun consumePeriod(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "100")
-        assertTrue(patternDetector.state is BinaryNumberEndsWithZeroState)
+        patternDetector.detect("floating point", "1.")
+        assertTrue(patternDetector.state is FloatingPointHasPeriodState)
     }
+
 
     @Test
     fun consumeOther(){
         val patternDetector: PatternDetector = PatternDetector()
-        patternDetector.detect("binary number", "10m")
+        patternDetector.detect("floating point", "p")
         assertTrue(patternDetector.state is InvalidState)
     }
 }
